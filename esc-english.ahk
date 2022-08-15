@@ -1,27 +1,19 @@
-/*
-
-source: https://velog.io/@full_accel/vim-ESC-키를-누르면-항상-영어-입력상태가-되도록-하기
-
-*/
 $Esc::
   ret := IME_CHECK("A")
-  if %ret% <> 0 ; 1 means IME is in Hangul(Korean) mode now.
+  if %ret% <> 0
   {
     Send, {Esc}
-    Send, {vk15} ;한글인 경우 Esc키를 입력하고 한영키를 입력해 준다.
+    Send, {vk15} 
   }
-  else if %ret% = 0 ; 0 means IME is in English mode now.
+  else if %ret% = 0
   {
-    Send, {Esc} ;영문인 경우 Esc키만 입력한다.
+    Send, {Esc} 
   }
 return
 
-/*
-  IME check 
-*/
 IME_CHECK(WinTitle) {
-  WinGet,hWnd,ID,%WinTitle%
-Return Send_ImeControl(ImmGetDefaultIMEWnd(hWnd),0x005,"")
+  WinGet, hWnd, ID, %WinTitle%
+return Send_ImeControl(ImmGetDefaultIMEWnd(hWnd),0x005,"")
 }
 
 Send_ImeControl(DefaultIMEWnd, wParam, lParam) {
