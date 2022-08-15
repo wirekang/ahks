@@ -6,10 +6,13 @@ SendMode Input
 
 WatchConfiguration("enable")
 
-InvisibleBorders(5,0,10,5)
 EnsureWorkspaces(0,1)
-WorkspacePadding(0,0,10)
-ContainerPadding(0,0,10)
+WorkspacePadding(0,0,5)
+ContainerPadding(0,0,5)
+
+EnsureWorkspaces(1,1)
+WorkspacePadding(1,0,5)
+ContainerPadding(1,0,5)
 
 ActiveWindowBorder("enable")
 
