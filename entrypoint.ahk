@@ -6,7 +6,10 @@ SetWorkingDir, %A_ScriptDir%
 
 RunKomorebi()
 
-<^+F10:: Reload
+<^+F10::
+  Process, Close, komorebi.exe
+  Reload
+return
 
 #Include, %A_ScriptDir%\Environment.ahk
 #Include, %A_ScriptDir%\utils.ahk
