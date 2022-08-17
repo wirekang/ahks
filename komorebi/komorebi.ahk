@@ -6,11 +6,13 @@ WatchConfiguration("enable")
 
 EnsureWorkspaces(0,1)
 WorkspaceName(0,0,"Left")
+WorkspaceLayout(0,0,"rows")
 WorkspacePadding(0,0,5)
 ContainerPadding(0,0,5)
 
 EnsureWorkspaces(1,1)
 WorkspaceName(1,0,"Right")
+WorkspaceLayout(1,0,"columns")
 WorkspacePadding(1,0,5)
 ContainerPadding(1,0,5)
 

@@ -8,6 +8,10 @@ RunKomorebi()
 
 <^+F10::
   Process, Close, komorebi.exe
+  RunKomorebi()
+return
+
+<^+F11::
   Reload
 return
 
