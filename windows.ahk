@@ -4,7 +4,8 @@
   win := WinExist("A")
   WinHandles.Push(win)
   WinMinimize, ahk_id %win%
-  ShowTray(WinHandles)
+  Clean(WinHandles)
+  ShowToast(WinHandles)
 return
 
 !u::
@@ -17,19 +18,63 @@ return
     If WinState = -1
       WinActivate
   }
-  ShowTray(WinHandles)
+  Clean(WinHandles)
+  ShowToast(WinHandles)
 return
 
-CloseTray:
-  TrayTip
-return
-
-ShowTray(WinHandles){
-  RST:=""
-  for index, element in WinHandles{
-    WinGet, Active_Process, ProcessName, ahk_id %element%
-    RST=%Active_Process%`n%RST%
+!+n::
+  if WinHandles.Length() > 0 {
+    v := WinHandles.Pop()
+    WinHandles.InsertAt(0,v)
   }
-  TrayTip "Queue", %RST%
-  SetTimer, CloseTray, 500
+  Clean(WinHandles)
+  ShowToast(WinHandles)
+return
+
+!+u::
+  if WinHandles.Length() > 0 {
+    v := WinHandles[1]
+    WinHandles.RemoveAt(1, 1)
+    WinHandles.Push(v)
+  }
+  Clean(WinHandles)
+  ShowToast(WinHandles)
+return
+
+ShowToast(WinHandles){
+  RST:=""
+  CoordMode, ToolTip, Screen
+
+  for index, handle in WinHandles{
+    WinGet, V_Process, ProcessName, ahk_id %handle%
+    WinGetTitle, V_Title , ahk_id %handle%$
+    V_Title := SubStr(V_Title, 1 ,15)
+
+    RST=%V_Process%-- %V_Title%`n%RST%
+  }
+  ToolTip, %RST%, 0, 0 
+  Sleep, 100
+  hwnd := WinExist("ahk_class tooltips_class32")
+  WinSet, Trans, 99, % "ahk_id" hwnd
+}
+
+Clean(ByRef WinHandles){
+  Temp := []
+  for index, handle in WinHandles{
+    IfWinExist, ahk_id %handle%
+    {
+      Temp.Push(handle)
+    }
+  }
+  WinHandles := Temp
+}
+
+; CleanLoop:
+;   Clean(WinHandles)
+;   ShowToast(WinHandles)
+;   SetTimer, CleanLoop, 5000
+; return
+
+WindowsInit(){
+  ; SetTimer, CleanLoop, 1000
 }

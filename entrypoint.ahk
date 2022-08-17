@@ -5,6 +5,7 @@ SendMode Input
 SetWorkingDir, %A_ScriptDir%
 
 RunKomorebi()
+WindowsInit()
 
 <^+F10::
   Process, Close, komorebi.exe
