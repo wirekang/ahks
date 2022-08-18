@@ -41,6 +41,11 @@ return
   ShowToast(WinHandles)
 return
 
+TransToolTip:
+  hwnd := WinExist("ahk_class tooltips_class32")
+  WinSet, Trans, 99, % "ahk_id" hwnd
+return
+
 ShowToast(WinHandles){
   RST:=""
   CoordMode, ToolTip, Screen
@@ -53,9 +58,8 @@ ShowToast(WinHandles){
     RST=%V_Process%-- %V_Title%`n%RST%
   }
   ToolTip, %RST%, 0, 0 
-  Sleep, 100
-  hwnd := WinExist("ahk_class tooltips_class32")
-  WinSet, Trans, 99, % "ahk_id" hwnd
+  SetTimer, TransToolTip, Off
+  SetTimer, TransToolTip, 1000
 }
 
 Clean(ByRef WinHandles){
