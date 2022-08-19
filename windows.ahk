@@ -67,7 +67,7 @@ Clean(ByRef WinHandles){
   for index, handle in WinHandles{
     IfWinExist, ahk_id %handle%
     {
-      if !(HasVal(WinHandles, handle)){
+      if !(HasVal(Temp, handle)){
         Temp.Push(handle)
       }
     }
