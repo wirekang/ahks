@@ -24,8 +24,9 @@ return
 
 !+n::
   if WinHandles.Length() > 0 {
-    v := WinHandles.Pop()
-    WinHandles.InsertAt(0,v)
+    v := WinHandles[1]
+    WinHandles.RemoveAt(1, 1)
+    WinHandles.Push(v)
   }
   Clean(WinHandles)
   ShowToast(WinHandles)
@@ -33,9 +34,8 @@ return
 
 !+u::
   if WinHandles.Length() > 0 {
-    v := WinHandles[1]
-    WinHandles.RemoveAt(1, 1)
-    WinHandles.Push(v)
+    v := WinHandles.Pop()
+    WinHandles.InsertAt(0,v)
   }
   Clean(WinHandles)
   ShowToast(WinHandles)
@@ -53,7 +53,7 @@ ShowToast(WinHandles){
   for index, handle in WinHandles{
     WinGet, V_Process, ProcessName, ahk_id %handle%
     WinGetTitle, V_Title , ahk_id %handle%$
-    V_Title := SubStr(V_Title, 1 ,15)
+    V_Title := SubStr(V_Title, 1 ,10)
 
     RST=%V_Process%-- %V_Title%`n%RST%
   }
@@ -67,10 +67,21 @@ Clean(ByRef WinHandles){
   for index, handle in WinHandles{
     IfWinExist, ahk_id %handle%
     {
-      Temp.Push(handle)
+      if !(HasVal(WinHandles, handle)){
+        Temp.Push(handle)
+      }
     }
   }
   WinHandles := Temp
+}
+
+HasVal(haystack, needle) {
+  if !(IsObject(haystack)) || (haystack.Length() = 0)
+    return 0
+  for index, value in haystack
+    if (value = needle)
+    return index
+return 0
 }
 
 ; CleanLoop:
