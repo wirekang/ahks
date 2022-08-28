@@ -90,6 +90,6 @@ return 0
 ;   SetTimer, CleanLoop, 5000
 ; return
 
-WindowsInit(){
+InitWindows(){
   ; SetTimer, CleanLoop, 1000
 }

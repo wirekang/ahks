@@ -4,13 +4,13 @@
 
 WatchConfiguration("enable")
 
-EnsureWorkspaces(0,1)
+EnsureWorkspaces(0,3)
 WorkspaceName(0,0,"Left")
 WorkspaceLayout(0,0,"columns")
 WorkspacePadding(0,0,5)
 ContainerPadding(0,0,5)
 
-EnsureWorkspaces(1,1)
+EnsureWorkspaces(1,3)
 WorkspaceName(1,0,"Right")
 WorkspaceLayout(1,0,"rows")
 WorkspacePadding(1,0,5)
@@ -18,8 +18,8 @@ ContainerPadding(1,0,5)
 
 WindowHidingBehaviour("minimize")
 
-ActiveWindowBorderColour(255,0,0, "Single")
 ActiveWindowBorder("enable")
+ActiveWindowBorderColour(255,0,0, "Single")
 
 CrossMonitorMoveBehaviour("insert")
 
@@ -59,4 +59,24 @@ return
 
 !+l::
   Move("right")
+return
+
+!Enter::
+  ToggleMaximize()
+return
+
+!7::
+  FocusWorkspace(0)
+return
+
+!8::
+  FocusWorkspace(1)
+return
+
+!9::
+  FocusWorkspace(2)
+return
+
+!0::
+  FocusWorkspace(3)
 return
