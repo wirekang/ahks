@@ -43,7 +43,7 @@ return
 
 TransToolTip:
   hwnd := WinExist("ahk_class tooltips_class32")
-  WinSet, Trans, 99, % "ahk_id" hwnd
+  WinSet, Trans, 70, % "ahk_id" hwnd
 return
 
 ShowToast(WinHandles){
@@ -59,7 +59,7 @@ ShowToast(WinHandles){
   }
   ToolTip, %RST%, 0, 0 
   SetTimer, TransToolTip, Off
-  SetTimer, TransToolTip, 1000
+  SetTimer, TransToolTip, 2000
 }
 
 Clean(ByRef WinHandles){
