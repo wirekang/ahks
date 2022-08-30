@@ -5,7 +5,7 @@
   WinHandles.Push(win)
   WinMinimize, ahk_id %win%
   Clean(WinHandles)
-  ShowToast(WinHandles)
+  Render(WinHandles)
 return
 
 !u::
@@ -19,7 +19,7 @@ return
       WinActivate
   }
   Clean(WinHandles)
-  ShowToast(WinHandles)
+  Render(WinHandles)
 return
 
 !+n::
@@ -29,7 +29,7 @@ return
     WinHandles.Push(v)
   }
   Clean(WinHandles)
-  ShowToast(WinHandles)
+  Render(WinHandles)
 return
 
 !+u::
@@ -38,7 +38,7 @@ return
     WinHandles.InsertAt(0,v)
   }
   Clean(WinHandles)
-  ShowToast(WinHandles)
+  Render(WinHandles)
 return
 
 TransToolTip:
@@ -46,7 +46,7 @@ TransToolTip:
   WinSet, Trans, 70, % "ahk_id" hwnd
 return
 
-ShowToast(WinHandles){
+Render(WinHandles){
   RST:=""
   CoordMode, ToolTip, Screen
 
