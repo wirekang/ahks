@@ -85,12 +85,5 @@ HasVal(haystack, needle) {
 return 0
 }
 
-; CleanLoop:
-;   Clean(WinHandles)
-;   ShowToast(WinHandles)
-;   SetTimer, CleanLoop, 5000
-; return
-
 InitWindows(){
-  ; SetTimer, CleanLoop, 1000
 }
