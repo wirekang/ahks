@@ -64,22 +64,3 @@ return
   Move("right")
 return
 
-!+Enter::
-  ToggleMaximize()
-return
-
-!^7::
-  FocusWorkspace(0)
-return
-
-!^8::
-  FocusWorkspace(1)
-return
-
-!^9::
-  FocusWorkspace(2)
-return
-
-!^0::
-  FocusWorkspace(3)
-return
