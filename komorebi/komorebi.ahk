@@ -4,21 +4,15 @@
 
 WatchConfiguration("enable")
 
-EnsureWorkspaces(0,3)
+EnsureWorkspaces(0,1)
 WorkspaceName(0,0,"Left")
 WorkspaceLayout(0,0,"columns")
-WorkspacePadding(0,0,10)
-WorkspacePadding(0,1,10)
-WorkspacePadding(0,2,10)
-WorkspacePadding(0,3,10)
+WorkspacePadding(0,0,5)
 
-EnsureWorkspaces(1,3)
+EnsureWorkspaces(1,1)
 WorkspaceName(1,0,"Right")
 WorkspaceLayout(1,0,"rows")
-WorkspacePadding(1,0,10)
-WorkspacePadding(1,1,10)
-WorkspacePadding(1,2,10)
-WorkspacePadding(1,3,10)
+WorkspacePadding(1,0,5)
 
 WindowHidingBehaviour("hide")
 
